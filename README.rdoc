@@ -1,6 +1,52 @@
-= memoizable
+= Memoizable
 
-Description goes here.
+== Introduction
+
+When doing recursion sometimes we are faced with the problem of performance
+versus the beauty of the code we are implementing, specially when, due to 
+the recursive nature of the method we have written we seem to be computing
+over and over the same.
+
+The concept of memoization comes from the idea of capturing a certain
+method call and saving it's result to an internal cache, so that, if this
+particular method (with the same parameters) is called, it will return the
+previously computed result.
+
+I was inspired in writing this little module after reading an article
+on James Edward Grey II'2 blog (http://blog.grayproductions.net/articles/caching_and_memoization)
+
+== Example
+
+Imagine we want to compute the Fibonacci sequence:
+
+class Fibonacci
+  def fib(num)
+    return num if num < 2
+    fib(num -1) + fib(num - 2)
+  end
+end
+
+As you can see immediately is that this will result in poor performance the
+higher the number in the sequence we request as the algorithm will compute
+over and over same method calls.
+
+You could add some cache functionallity into your method and class, although
+you would add new behaviour that the class and method shouldn't really have
+as they should be dealing exclusively with the logic they are supposed to 
+execute; in this case the computation of the Fibonacci sequence.
+
+Here is how the class would look like when we Memonize it:
+
+class Fibonacci
+  include Memoizable
+
+  def fib(num)
+    return num if num < 2
+    fib(num -1) + fib(num - 2)
+  end
+  
+  memoize :fib
+end
 
 == Note on Patches/Pull Requests
  

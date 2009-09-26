@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "memoizable"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Memoize method calls}
+    gem.description = %Q{Memoizes calls to method to boost the performance of recursive calls}
     gem.email = "ecomba@nexwerk.com"
     gem.homepage = "http://github.com/ecomba/memoizable"
     gem.authors = ["Enrique Comba Riepenhausen"]
@@ -38,7 +38,7 @@ Rake::RDocTask.new do |rdoc|
   if File.exist?('VERSION')
     version = File.read('VERSION')
   else
-    version = ""
+    version = "0.1.0"
   end
 
   rdoc.rdoc_dir = 'rdoc'
