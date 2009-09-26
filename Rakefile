@@ -38,7 +38,7 @@ Rake::RDocTask.new do |rdoc|
   if File.exist?('VERSION')
     version = File.read('VERSION')
   else
-    version = "0.1.0"
+    version = ""
   end
 
   rdoc.rdoc_dir = 'rdoc'
